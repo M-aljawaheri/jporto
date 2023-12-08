@@ -5,19 +5,24 @@ import {AiFillTwitterCircle, AiFillLinkedin, AiFillYoutube, AiFillGithub} from '
 import jdev from "../../public/personal_nobg.png";
 
 import { LINKEDIN_URL, GITHUB_URL, RESUME_PDF } from "./constants.js";
+import BackgroundWithTriangles from "./BackgroundWithTriangles";
 
 import SpookyText from "./animatedTags";
+import WordflowBackground from "./WordflowBackground.tsx";
 
+// "bg-white px-10 "
 export default function Home() {
   return (
-    <div>
+    <>
+      <WordflowBackground />
+      <div>
       <Head>
         <title> Mohammed Al-Jawaheri Portofolio </title>
         <link rel="icon" href="favicon.ico" />
       </Head>
 
       <main>
-        <section className="bg-white px-10 ">
+        <section className="bg-transparent">
           <nav className="py-5 mb-12 flex justify-between">
             <SpookyText />
             <ul className="flex items-center">
@@ -47,7 +52,6 @@ export default function Home() {
             </p>
           </div>
 
-
           <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600 overflow-hidden">
             <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
               <AiFillLinkedin className="hover:text-teal-300 hover:scale-110 transition duration-300" />
@@ -65,5 +69,6 @@ export default function Home() {
         </section>
       </main>
     </div>
+    </>
   )
 }
