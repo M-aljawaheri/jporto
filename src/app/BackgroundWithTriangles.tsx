@@ -153,20 +153,21 @@ const drawCell = (matrix: any, ctx: any, x: number, y: number) => {
 };
 
 // ------------------------------------
-const createMatrix = (ctx: any) => {
+const createMatrix = (ctx: any, start_x: number, start_y: number,
+                                end_x: number, end_y: number) => {
   const matrix = new Matrix();
 
   // Create a matrix of dots for the squares, with shifts
-  for (let x = 0; x <= canvas_lw; x += square_lw)
-    for (let y = 0; y <= canvas_lh; y += square_lh) {
+  for (let x = start_x; x <= end_x; x += square_lw)
+    for (let y = start_y; y <= end_y; y += square_lh) {
       const xWithShift = x + getShiftPositiveOrNegative(squareShift_lx);
       const yWithShift = y + getShiftPositiveOrNegative(squareShift_ly);
       matrix.setValue(x, y, arrayToString(xWithShift, yWithShift));
     }
 
   // Draw the squares (we need 4 dots for each square)
-  for (let x = 0; x <= canvas_lw - square_lw; x += square_lw)
-    for (let y = 0; y <= canvas_lh - square_lh; y += square_lh) {
+  for (let x = start_x; x <= end_x - square_lw; x += square_lw)
+    for (let y = start_y; y <= end_y - square_lh; y += square_lh) {
       drawCell(matrix, ctx, x, y);
     }
 };
@@ -176,7 +177,7 @@ const createMatrix = (ctx: any) => {
 // Draws a window background of squares.
 // Each square draws 2 triangles.
 // Each triangle has random shifts in: corner positions, and colour.
-const BackgroundWithTriangles = () => {
+const BackgroundWithTriangles = ( props: any ) => {
   const ref = useRef(null);
 
   // ------------------------------------
@@ -184,7 +185,7 @@ const BackgroundWithTriangles = () => {
     if (ref && ref.current) {
       const canvas: any = ref.current;
       const ctx = canvas.getContext("2d");
-      createMatrix(ctx);
+      createMatrix(ctx, props.start_x, props.start_y, props.end_x, props.end_y);
     }
   }, [ref?.current]);
 
