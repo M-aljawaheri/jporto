@@ -3,6 +3,9 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
+import Matter from 'matter-js';
+
+
 // SETTINGS:
 // Canvas contains many squares, each square contains 2 triangles.
 // l=logical, w=width, h=height.

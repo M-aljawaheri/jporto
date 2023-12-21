@@ -9,12 +9,13 @@ import BackgroundWithTriangles from "./BackgroundWithTriangles";
 
 import SpookyText from "./animatedTags";
 import WordflowBackground from "./WordflowBackground.tsx";
+import Comp from "./BackgroundSim.jsx";
 
 // "bg-white px-10 "
 export default function Home() {
   return (
     <>
-      <WordflowBackground />
+      <Comp />
       <div>
       <Head>
         <title> Mohammed Al-Jawaheri Portofolio </title>
