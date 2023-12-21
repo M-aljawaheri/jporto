@@ -33,3 +33,14 @@ body {
   font-family: "burtons";
   src: url("../../public/Burtons.otf");
 }
+
+
+@font-face {
+  font-family: "naskh";
+  src: url("../../public/NotoNaskhArabic-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Tajawal";
+  src: url("../../public/Tajawal-Regular.ttf");
+}

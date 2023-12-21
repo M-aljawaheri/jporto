@@ -10,6 +10,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         burtons: "burtons",
+        naskh: ['naskh'],
+        Tajawal: ['Tajawal'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

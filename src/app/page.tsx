@@ -22,6 +22,7 @@ export default function Home() {
       </Head>
 
       <main>
+        {/* <BackgroundWithTriangles start_x={0} start_y={0} end_x={700} end_y={700} /> */}
         <section className="bg-transparent">
           <nav className="py-5 mb-12 flex justify-between">
             <SpookyText />
@@ -69,6 +70,7 @@ export default function Home() {
         </section>
       </main>
     </div>
+    <div className="font-naskh">محمد الجواهري</div>
     </>
   )
 }

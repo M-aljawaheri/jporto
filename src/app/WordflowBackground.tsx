@@ -20,21 +20,67 @@ const Canvas = styled.canvas`
 `;
 
 
+// Define a particle class
+class Particle {
+  x: number;
+  y: number;
+  radius: number;
+  color: string;
+  velocity: { x: number, y: number };
+
+  constructor(x: number, y: number, radius: number, color: string) {
+      this.x = x;
+      this.y = y;
+      this.radius = radius;
+      this.color = color;
+      this.velocity = { x: 0, y: 1 };
+  }
+
+  draw(ctx: any): void {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+      ctx.closePath();
+  }
+
+  update(canvas: any, ctx: any): void {
+      this.y += this.velocity.y;
+      this.velocity.y += 0.05; // gravity effect
+
+      // Bounce off the bottom of the canvas
+      if (this.y + this.radius + this.velocity.y > canvas.height) {
+          this.velocity.y = -this.velocity.y * 0.9; // a little energy lost on bounce
+      }
+
+      this.draw(ctx);
+  }
+}
+
+// Create an array of particles
+const particles: Particle[] = [];
+
+// Initialize some particles
+for (let i = 0; i < 20; i++) {
+    const radius = 5 ;
+    particles.push(new Particle(Math.random()*500, Math.random()*500, radius, 'blue'));
+}
+
 
 // ------------------------------------
 const createWordflow = (ctx: any, canvas: any) => {
     // Set font style
-    ctx.font = "20px Arial";
+    ctx.font = "20px naskh";
 
     // Optional: align text
-    ctx.textAlign = "right"; // Center text horizontally
-    ctx.textBaseline = "right"; // Center text vertically
+    ctx.textAlign = "left"; // Center text horizontally
+    ctx.textBaseline = "left"; // Center text vertically
 
     // Arabic text
     var arabicText = "مرحبا بالعالم"; // "Hello World" in Arabic
 
     // Draw text
-    ctx.fillText(arabicText, canvas.width / 2, canvas.height / 2);
+    ctx.fillText(arabicText, 100, canvas.height / 2);
 };
 
 // ------------------------------------
@@ -50,9 +96,12 @@ const WordflowBackground = () => {
     if (ref && ref.current) {
       const canvas: any = ref.current;
       const ctx = canvas.getContext("2d");
-      createWordflow(ctx, canvas);
+      particles.forEach(particle => {
+        particle.update(canvas, ctx);
+    });
+      //createWordflow(ctx, canvas);
     }
-  });
+  }, [ref?.current]);
 
   // ------------------------------------
   // Width and height: logical (int), not physical (px).
