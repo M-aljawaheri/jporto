@@ -15,7 +15,6 @@ const SpookyText = () => {
     return () => clearInterval(interval);
   }, []);
 
-  console.log(count);
   return (<h1 className="text-xl font-burtons">{ text.substring(count, text.length) + text.substring(0, count) }</h1>);
 }
 

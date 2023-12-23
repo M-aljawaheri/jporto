@@ -15,7 +15,7 @@ import Comp from "./BackgroundSim.jsx";
 export default function Home() {
   return (
     <>
-      <Comp />
+        <Comp/>
       <div>
       <Head>
         <title> Mohammed Al-Jawaheri Portofolio </title>
@@ -25,7 +25,7 @@ export default function Home() {
       <main>
         {/* <BackgroundWithTriangles start_x={0} start_y={0} end_x={700} end_y={700} /> */}
         <section className="bg-transparent">
-          <nav className="py-5 mb-12 flex justify-between">
+          <nav className="px-5 py-5 mb-12 flex justify-between">
             <SpookyText />
             <ul className="flex items-center">
               <li>
